@@ -9,6 +9,17 @@ pipeline {
             }
         }
 
+        stage('Debug workspace') {
+            steps {
+                bat 'echo Workspace: %WORKSPACE%'
+                bat 'cd'
+                bat 'dir'
+                bat 'dir /s /b laptop_cart.py'
+                bat 'git status --short'
+                bat 'git ls-files *laptop_cart.py'
+            }
+        }
+
         stage('Run UI tests') {
             steps {
                 bat 'if not exist reports mkdir reports'
