@@ -17,7 +17,7 @@ pipeline {
                 bat 'dir /s /b laptop_cart.py'
 
                 bat 'if not exist reports mkdir reports'
-                bat 'python -m pytest -v laptop_cart.py --junitxml=reports/junit.xml'
+                bat 'python -m pytest -v test_laptop_cart.py --junitxml=reports/junit.xml'
             }
         }
     }
