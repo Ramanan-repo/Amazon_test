@@ -9,17 +9,13 @@ pipeline {
             }
         }
 
-        stage('Debug workspace') {
-            steps {
-                bat 'echo Workspace: %WORKSPACE%'
-                bat 'cd'
-                bat 'dir'
-                bat 'dir /s /b laptop_cart.py'
-            }
-        }
-
         stage('Run UI tests') {
             steps {
+                bat 'echo JENKINSFILE DEBUG VERSION'
+                bat 'echo Workspace: %WORKSPACE%'
+                bat 'dir'
+                bat 'dir /s /b laptop_cart.py'
+
                 bat 'if not exist reports mkdir reports'
                 bat 'python -m pytest -v laptop_cart.py --junitxml=reports/junit.xml'
             }
