@@ -14,7 +14,7 @@ pipeline {
                 bat 'echo JENKINSFILE DEBUG VERSION'
                 bat 'echo Workspace: %WORKSPACE%'
                 bat 'dir'
-                bat 'dir /s /b laptop_cart.py'
+                bat 'dir /s /b test_laptop_cart.py'
 
                 bat 'if not exist reports mkdir reports'
                 bat 'python -m pytest -v test_laptop_cart.py --junitxml=reports/junit.xml'
