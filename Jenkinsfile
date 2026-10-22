@@ -15,8 +15,6 @@ pipeline {
                 bat 'cd'
                 bat 'dir'
                 bat 'dir /s /b laptop_cart.py'
-                bat 'git status --short'
-                bat 'git ls-files *laptop_cart.py'
             }
         }
 
