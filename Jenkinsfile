@@ -14,7 +14,7 @@ pipeline {
                 bat 'echo JENKINSFILE DEBUG VERSION'
                 bat 'echo Workspace: %WORKSPACE%'
                 bat 'dir'
-                bat 'where /r "%WORKSPACE%" laptop_cart.py'
+                bat 'where /r "%WORKSPACE%" test_adding_product_cart.py'
             }
         }
 
@@ -28,7 +28,6 @@ pipeline {
                 bat 'if not exist reports mkdir reports'
 
                 // Change this path if the search finds the file in a subfolder.
-                bat 'python -m pytest -v laptop_cart.py --junitxml=reports/junit.xml'
                 bat 'python -m pytest -v test_adding_product_cart.py --junitxml=reports/junit.xml'
             }
         }
