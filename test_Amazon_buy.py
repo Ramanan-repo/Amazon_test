@@ -34,7 +34,7 @@ def test_select_items(page: Page):
     """this method is select the items and
         add in the cart"""
     page.get_by_role("button", name ="Add to cart").first.click()
-    page.locator("#nav-cart").scroll_into_view_if_needed()
+    page.mouse.wheel(0, -600)
     page.locator("#nav-cart").first.click()
     page.wait_for_url("**=nav_cart", timeout=2000)
     expect(page.get_by_text("The shopping cart is a"
@@ -51,7 +51,9 @@ def test_select_customer_review(page: Page):
 def test_proceed_to_buy_from_cart(page:Page):
     """this method is to select the Amazon cart button in top right corner"""
     page.mouse.wheel(0, -600)
-    page.locator("#nav-cart").click()
+    item_in_cart_btn = page.locator("#nav-cart")
+    item_in_cart_btn.click()
+    expect(item_in_cart_btn.get_by_text("1"))
     page.wait_for_url("**=nav_cart", timeout = 2000)
     expect(page.get_by_text("The shopping cart is a"
                             " temporary place to store")).to_be_visible()

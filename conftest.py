@@ -14,3 +14,6 @@ def test_open_set_location(page : Page):
     page.wait_for_timeout(2000)
     page.get_by_role("button", name ="Apply").click()
     expect(page.get_by_text("Bengaluru 560066")).to_be_visible()
+    page.wait_for_timeout(3000)
+    yield
+    page.close()
