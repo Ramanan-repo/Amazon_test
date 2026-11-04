@@ -23,7 +23,7 @@ pipeline {
                 bat 'echo JENKINSFILE DEBUG VERSION'
                 bat 'echo Workspace: %WORKSPACE%'
                 bat 'dir'
-                bat 'dir /s /b test_laptop_cart.py'
+                bat 'dir /s /b test_adding_product_cart.py'
 
                 bat 'if not exist reports mkdir reports'
 
