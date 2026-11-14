@@ -45,7 +45,7 @@ def test_select_items(page: Page):
 def test_select_customer_review(page: Page):
     """This method is for selecting 4 star rating product"""
     page.get_by_role("link", name = "Apply the filter 4 stars").click()
-    time.sleep(2)
+    page.wait_for_timeout(2000)
 
 
 def test_proceed_to_buy_from_cart(page:Page):
@@ -84,4 +84,18 @@ def test_select_oil_filter(page : Page):
 def test_select_country_of_origin(page: Page):
     expect(page.get_by_text("Country of Origin")).to_be_visible()
     page.get_by_role("link", name ="Apply the filter India")
+
+
+def test_select_brand_for_TV(page : Page):
+    """Searching brand for TV and clicking Samsung"""
+    brands = page.locator("#brandsRefinements")
+    expect(brands).to_be_visible(timeout = 2000)
+    select_brand = brands.inner_text()
+    print(select_brand)
+    if "Samsung" in select_brand:
+        page.get_by_role("link", name = "Apply the filter"
+                                        " Samsung to narrow results").click()
+    else:
+        raise AssertionError ("Samsung brand is not there in brand")
+    expect(page.get_by_text("Check each product page for other buying options.")).to_be_visible()
 
